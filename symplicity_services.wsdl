@@ -1,0 +1,89 @@
+<?xml version ='1.0' encoding ='UTF-8' ?>
+<definitions name='InfoLookups'
+  targetNamespace='https://fake-server.umas.edu'
+  xmlns:tns='https://fake-server.umas.edu'
+  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+  xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+  xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/'
+  xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+  xmlns='http://schemas.xmlsoap.org/wsdl/'>
+
+
+
+<message name='getStudentInformationRequest'>
+  <part name='key' type='xsd:string'/>
+  <part name='empl_id' type='xsd:string'/>
+</message>
+<message name='getStudentInformationResponse'>
+  <part name='status' type='xsd:string'/>
+  <part name='empl_id' type='xsd:string'/>
+  <part name='last_name' type='xsd:string'/>
+  <part name='first_name' type='xsd:string'/>
+  <part name='middle_initial' type='xsd:string'/>
+  <part name='full_name' type='xsd:string'/>
+  <part name='sex' type='xsd:string'/>
+  <part name='birthdate' type='xsd:string'/>
+  <part name='under_18_flag' type='xsd:string'/>
+  <part name='over_21_flag' type='xsd:string'/>
+  <part name='ferpa_flag' type='xsd:string'/>
+  <part name='admit_term' type='xsd:string'/>
+  <part name='admit_term_descr' type='xsd:string'/>
+  <part name='expect_grad_term' type='xsd:string'/>
+  <part name='expect_grad_term_descr' type='xsd:string'/>
+  <part name='prim_acad_career' type='xsd:string'/>
+  <part name='prim_acad_prog' type='xsd:string'/>
+  <part name='prim_acad_prog_status' type='xsd:string'/>
+  <part name='prim_acad_prog_status_descr' type='xsd:string'/>
+  <part name='prim_acad_plan' type='xsd:string'/>
+  <part name='curr_assign_building' type='xsd:string'/>
+  <part name='curr_assign_room' type='xsd:string'/>
+  <part name='mail_address1' type='xsd:string'/>
+  <part name='mail_address2' type='xsd:string'/>
+  <part name='mail_city' type='xsd:string'/>
+  <part name='mail_state_prov' type='xsd:string'/>
+  <part name='mail_postal_code' type='xsd:string'/>
+  <part name='perm_address1' type='xsd:string'/>
+  <part name='perm_address2' type='xsd:string'/>
+  <part name='perm_city' type='xsd:string'/>
+  <part name='perm_state_prov' type='xsd:string'/>
+  <part name='perm_postal_code' type='xsd:string'/>
+  <part name='perm_phone' type='xsd:string'/>
+  <part name='local_phone' type='xsd:string'/>
+  <part name='oit_email' type='xsd:string'/>
+  <part name='Athlete' type='xsd:string'/>
+  <part name='Sport' type='xsd:string'/>
+  <part name='RA-PM' type='xsd:string'/>
+  <part name='on_campus' type='xsd:string'/>
+  <part name='last_updated_dttm' type='xsd:string'/>
+</message>
+
+<portType name='rlWebServicesPortType'>
+  <operation name='getStudentInformation'>
+    <input message='tns:getStudentInformationRequest'/>
+    <output message='tns:getStudentInformationResponse'/>
+  </operation>
+</portType>
+
+<binding name='rlWebServicesBinding' type='tns:rlWebServicesPortType'>
+  <soap:binding style='rpc'
+    transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='getStudentInformation'>
+    <soap:operation soapAction='urn:rlWebServices#getStudentInformation'/>
+    <input>
+      <soap:body use='encoded' namespace='urn:rlWebServices'
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+    </input>
+    <output>
+      <soap:body use='encoded' namespace='urn:rlWebServices'
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+    </output>
+  </operation>
+</binding>
+
+<service name='StudentInfoService'>
+  <port name='StudentInfoPort' binding='tns:rlWebServicesBinding'>
+    <soap:address location='https://fake-server.umas.edu/ws_server.php'/>
+  </port>
+</service>
+</definitions>
+

@@ -1,0 +1,5 @@
+<?php
+
+$enabled = TRUE;
+
+?>
